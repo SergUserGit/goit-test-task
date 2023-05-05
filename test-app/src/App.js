@@ -1,13 +1,22 @@
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
+import CardTwitter from "./components/CardTwitter/CardTwitter";
+import React, { useState, useEffect } from "react";
+
+let page = 1;
 
 function App() {
-  return (
-    <div className="App">
-      <p>152</p>
-    </div>
-  );
+  const countOfPagePagination = 3;
+
+  const [imageTweet, SetImageTweet] = useState([]);
+
+  useEffect(() => {}, []);
+
+  return <CardTwitter />;
 }
+//<div className="App">
+//      <p>152</p>
+//    </div>
 //  <header className="App-header">
 //    <img src={logo} className="App-logo" alt="logo" />
 //    <p>
