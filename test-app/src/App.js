@@ -1,4 +1,6 @@
 //import logo from "./logo.svg";
+
+import ButtonLoadMore from "./components/ButtonLoadMore/ButtonLoadMore";
 import "./App.css";
 import CardTwitter from "./components/CardTwitter/CardTwitter";
 import TweeterList from "./components/TweeterList/TweeterList";
@@ -28,8 +30,16 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gridGap: "16px",
+        paddingBottom: "24px",
+      }}
+    >
       <TweeterList tweetsList={imageTweet} />
+      <ButtonLoadMore />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .twitterList {
   display: grid;
   max-width: calc(70vw - 48px);
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
