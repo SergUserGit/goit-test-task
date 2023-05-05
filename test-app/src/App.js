@@ -2,7 +2,6 @@
 
 import ButtonLoadMore from "./components/ButtonLoadMore/ButtonLoadMore";
 import "./App.css";
-import CardTwitter from "./components/CardTwitter/CardTwitter";
 import TweeterList from "./components/TweeterList/TweeterList";
 import React, { useState, useEffect } from "react";
 
@@ -12,6 +11,21 @@ function App() {
   const countOfPagePagination = 3;
 
   const [imageTweet, SetImageTweet] = useState([]);
+  const [countOfElement, SetCountOfElement] = useState(3);
+  const [visibleLoadMore, SetvisibleLoadMore] = useState(true);
+
+  function getCopyArray(Array, indexFirst, IndexLast) {
+    return Array.slice(indexFirst, IndexLast);
+  }
+
+  function onClickLoadeMoreBtn() {
+    page += 1;
+    const firstElement = page * countOfPagePagination;
+    SetCountOfElement(firstElement);
+    if (firstElement >= imageTweet.length) {
+      SetvisibleLoadMore(false);
+    }
+  }
 
   useEffect(() => {
     const URL = "https://6454b382a74f994b33468a7b.mockapi.io/tweet";
@@ -38,26 +52,11 @@ function App() {
         paddingBottom: "24px",
       }}
     >
-      <TweeterList tweetsList={imageTweet} />
-      <ButtonLoadMore />
+      <TweeterList tweetsList={getCopyArray(imageTweet, 0, countOfElement)} />
+      {visibleLoadMore && (
+        <ButtonLoadMore onClickLoadeMoreBtn={onClickLoadeMoreBtn} />
+      )}
     </div>
   );
 }
-//<div className="App">
-//      <p>152</p>
-//    </div>
-//  <header className="App-header">
-//    <img src={logo} className="App-logo" alt="logo" />
-//    <p>
-//      Edit <code>src/App.js</code> and save to reload.
-//    </p>
-//    <a
-//      className="App-link"
-//      href="https://reactjs.org"
-//      target="_blank"
-//      rel="noopener noreferrer"
-//    >
-//      Learn React
-//    </a>
-//  </header>
 export default App;
