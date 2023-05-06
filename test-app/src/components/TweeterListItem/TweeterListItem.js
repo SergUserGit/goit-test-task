@@ -3,7 +3,7 @@ import cardLogo from "../../images/card_logo.png";
 import cardSign from "../../images/card_sign.png";
 import cardLine from "../../images/card_line.png";
 import cardAvatarEllipse from "../../images/card_avatar_ellipse.png";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 //JSON.parse(localStorage.getItem("stateFollow")) ?? [];
 
@@ -22,24 +22,27 @@ const TweeterListItem = ({
 }) => {
   const [tweetFollow, SetTweetFollow] = useState(false);
 
-  function getStatus(id) {
-    const stateObject = arrayStateFollow.find((value, index) => {
-      return value.idButton === idItem;
-    });
-    if (stateObject !== undefined) {
-      if (stateObject.stateFollow === "false") {
-        return false;
+  const getStatus = useCallback(
+    (id) => {
+      const stateObject = arrayStateFollow.find((value, index) => {
+        return value.idButton === idItem;
+      });
+      if (stateObject !== undefined) {
+        if (stateObject.stateFollow === "false") {
+          return false;
+        } else {
+          return true;
+        }
       }
-      {
-        return true;
-      }
-    }
-    return false;
-  }
+      return false;
+    },
+    [idItem]
+  );
 
   useEffect(() => {
-    SetTweetFollow(getStatus(idItem));
-  }, []);
+    const status = getStatus(idItem);
+    SetTweetFollow(status);
+  }, [idItem, getStatus]);
 
   function onClickFollow(button) {
     const isFollow = button.target.dataset.follow;
