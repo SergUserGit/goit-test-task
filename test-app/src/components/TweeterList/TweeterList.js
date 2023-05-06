@@ -10,6 +10,7 @@ const TweeterList = function ({ tweetsList }) {
           tweetsCount={tweets}
           followersCount={followers}
           avatarSrc={avatar}
+          idItem={id}
         />
       ))}
     </ul>
