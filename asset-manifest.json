@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/goit-test-task/static/css/main.954df819.css",
+    "main.js": "/goit-test-task/static/js/main.86709ff2.js",
+    "static/js/787.a86f3764.chunk.js": "/goit-test-task/static/js/787.a86f3764.chunk.js",
+    "static/media/card_sign.png": "/goit-test-task/static/media/card_sign.032662a2a907475127d7.png",
+    "index.html": "/goit-test-task/index.html",
+    "main.954df819.css.map": "/goit-test-task/static/css/main.954df819.css.map",
+    "main.86709ff2.js.map": "/goit-test-task/static/js/main.86709ff2.js.map",
+    "787.a86f3764.chunk.js.map": "/goit-test-task/static/js/787.a86f3764.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.954df819.css",
+    "static/js/main.86709ff2.js"
+  ]
+}
