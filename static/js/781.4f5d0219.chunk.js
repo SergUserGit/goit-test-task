@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_app=self.webpackChunktest_app||[]).push([[781],{781:function(e,t,n){n.r(t),n.d(t,{default:function(){return u}});var s="Home_title__-QQVp",c=n(184),u=function(){return(0,c.jsx)("section",{children:(0,c.jsx)("h1",{className:s,children:"Tweets page"})})}}}]);
+//# sourceMappingURL=781.4f5d0219.chunk.js.map
