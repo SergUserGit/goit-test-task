@@ -5,13 +5,6 @@ import cardLine from "../../images/card_line.png";
 import cardAvatarEllipse from "../../images/card_avatar_ellipse.png";
 import React, { useState, useEffect, useCallback } from "react";
 
-//JSON.parse(localStorage.getItem("stateFollow")) ?? [];
-
-//const arrayStateFollow = [
-//  { idButton: "1", stateFollow: "true" },
-//  { idButton: "2", stateFollow: "false" },
-//];
-
 const arrayStateFollow = JSON.parse(localStorage.getItem("stateFollow")) ?? [];
 
 const TweeterListItem = ({
@@ -19,6 +12,7 @@ const TweeterListItem = ({
   followersCount,
   avatarSrc,
   idItem,
+  tweetFilter,
 }) => {
   const [tweetFollow, SetTweetFollow] = useState(false);
 
@@ -69,8 +63,29 @@ const TweeterListItem = ({
     localStorage.setItem("stateFollow", JSON.stringify(arrayStateFollow));
   }
 
+  function getStyleItem() {
+    if (tweetFilter === "follow") {
+      if (!tweetFollow) {
+        return "list-item";
+      } else {
+        return "none";
+      }
+    } else if (tweetFilter === "followings") {
+      if (tweetFollow) {
+        return "list-item";
+      } else {
+        return "none";
+      }
+    }
+    return "list-item";
+  }
+
+  const styleItem = {
+    display: getStyleItem(),
+  };
+
   return (
-    <li className={css.cardTwitter}>
+    <li style={styleItem} className={css.cardTwitter}>
       <img className={css.cardLogo} src={cardLogo} alt="logo" />
       <img className={css.cardSign} src={cardSign} alt="sign" />
       <img src={cardLine} alt="line" />

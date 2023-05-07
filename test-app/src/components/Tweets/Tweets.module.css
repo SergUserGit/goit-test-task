@@ -1,0 +1,38 @@
+.buttonBack {
+  margin-left: 29px;
+  margin-top: 10px;
+  width: 90px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #FFF;
+  color: #0000ff;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #000000;
+  border-radius: 2px;
+}
+
+.dropdown {
+  width: 250px;
+  border: 2px solid #1f9a88;
+
+}
+
+.customOptions {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.dropdownMenu {
+  background-color: #7fffd4;
+  font-weight: 700;
+
+}
+
+.dropdownControl {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0000ff;
+  background-color: #7fffd4;
+}

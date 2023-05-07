@@ -1,5 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import css from "./App.module.css";
 
 const Home = lazy(() => import("./components/Home/Home"));
 const Tweets = lazy(() => import("./components/Tweets/Tweets"));
@@ -7,11 +8,11 @@ const Tweets = lazy(() => import("./components/Tweets/Tweets"));
 function App() {
   return (
     <div>
-      <nav>
-        <NavLink id={"linkHome"} to="/" end>
+      <nav className={css.navLink}>
+        <NavLink className={css.link} id={"linkHome"} to="/" end>
           Home
         </NavLink>
-        <NavLink id={"linkTweets"} to="/tweets">
+        <NavLink className={css.link} id={"linkTweets"} to="/tweets">
           Tweets
         </NavLink>
       </nav>

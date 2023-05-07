@@ -2,10 +2,16 @@ import ButtonLoadMore from "../ButtonLoadMore/ButtonLoadMore";
 import TweeterList from "../TweeterList/TweeterList";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import css from "./Tweets.module.css";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 let page = 1;
 
 function Tweets() {
+  const options = ["followings show all", "follow", "followings"];
+  const defaultOption = options[0];
+
   const navigate = useNavigate();
 
   const countOfPagePagination = 3;
@@ -13,6 +19,7 @@ function Tweets() {
   const [imageTweet, SetImageTweet] = useState([]);
   const [countOfElement, SetCountOfElement] = useState(3);
   const [visibleLoadMore, SetvisibleLoadMore] = useState(true);
+  const [tweetFilter, SetTweetFilter] = useState("followings show all");
 
   function getCopyArray(Array, indexFirst, IndexLast) {
     return Array.slice(indexFirst, IndexLast);
@@ -47,6 +54,10 @@ function Tweets() {
     navigate("/");
   };
 
+  function onSelectDropdown(option) {
+    SetTweetFilter(option.value);
+  }
+
   return (
     <div
       style={{
@@ -56,10 +67,27 @@ function Tweets() {
         paddingBottom: "24px",
       }}
     >
-      <button type="button" onClick={onGoBackClick}>
-        <span>Back</span>
-      </button>
-      <TweeterList tweetsList={getCopyArray(imageTweet, 0, countOfElement)} />
+      <div className={css.customOptions}>
+        <button
+          className={css.buttonBack}
+          type="button"
+          onClick={onGoBackClick}
+        >
+          <span>Back</span>
+        </button>
+        <Dropdown
+          options={options}
+          value={defaultOption}
+          className={css.dropdown}
+          menuClassName={css.dropdownMenu}
+          controlClassName={css.dropdownControl}
+          onChange={onSelectDropdown}
+        />
+      </div>
+      <TweeterList
+        tweetsList={getCopyArray(imageTweet, 0, countOfElement)}
+        filter={tweetFilter}
+      />
       {visibleLoadMore && (
         <ButtonLoadMore onClickLoadeMoreBtn={onClickLoadeMoreBtn} />
       )}
